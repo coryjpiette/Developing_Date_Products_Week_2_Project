@@ -1,0 +1,36 @@
+---
+title: "Developing Data Products: Week 2 Project"
+author: "Cory Piette"
+date: "April 14, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+[Click here to view source code on Github](https://github.com/coryjpiette/Developing_Date_Products_Week_2_Project)
+
+## Map via Leaflet
+Create a leaflet map object.
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+
+```
+
+Provide an icon for the marker with a link to original picture.
+```{r}
+AnfieldIcon <- makeIcon(
+   iconUrl = "https://www.stadiumguide.com/wp-content/gallery/anfieldpast/anfieldnew1.jpg",
+   iconWidth = 40*215/230, iconHeight = 30,
+   iconAnchorX = 40*215/230/2, iconAnchorY = 15
+)
+```
+
+Attach the icon to the map marker.
+```{r}
+AnfieldPopup <- c("<a href= 'https://www.stadiumguide.com/anfield/' >Anfield <br><img src='https://www.stadiumguide.com/wp-content/gallery/anfieldpast/anfieldnew1.jpg' width='210' height='132'  alt='Anfield Stadium' title='Anfield Stadium'></a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat=53.4308, lng=-2.9608, popup = AnfieldPopup)
+```
